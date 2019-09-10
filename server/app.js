@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 //Load Routes
+var feed_routes =require('./routes/feedRoutes');
 
 
 // Middlewares
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 
 
 // Use Routes
+app.use('/', feed_routes);
 
 
 
