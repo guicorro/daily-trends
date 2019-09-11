@@ -1,0 +1,14 @@
+<h2>Listado de noticias</h2>
+<div class="row card-group">
+  <div *ngFor="let feed of feeds" class="col-3" style="padding-bottom: 10px">
+    <div class="card h-100">
+      <img *ngIf="feed.image" src="{{ feed.image }}" class="card-img-top" />
+      <img *ngIf="!feed.image" src="..." class="card-img-top" style="height: 100%" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ feed.title }}</h5>
+        <p class="card-text">{{ feed.body }}</p>
+        <a href="{{ feed.source }}" class="btn btn-primary">Fuente</a>
+      </div>
+    </div>
+  </div>
+</div>
