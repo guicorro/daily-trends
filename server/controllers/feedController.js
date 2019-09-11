@@ -80,7 +80,6 @@ function createFeed(req, res){
 function updateFeed(req, res){
     var feed = req.body;
     var feedId = req.params.id;
-    console.log(feedId);
 
     if(feedId == null || feedId == ''){
         return res.status(200).json('No existe el _id');

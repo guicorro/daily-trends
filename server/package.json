@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/guicorro/daily-trends#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "connect-multiparty": "^2.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.7.0",
