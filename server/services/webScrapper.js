@@ -4,8 +4,8 @@ const cheerio = require("cheerio");
 const request = require("request");
 
 module.exports = {
-  scrappData: function() {
-    request("https://elpais.com", (err, res, body) => {
+  scrappData: async function() {
+    await request("https://elpais.com", (err, res, body) => {
       if (!err && res.statusCode == 200) {
         let $ = cheerio.load(body);
         const news = $("div[class=articulo__interior]");
@@ -41,13 +41,15 @@ module.exports = {
           };
 
           request(options, function(error, response, body) {
-            if (error) throw new Error(error);
+            if (error){
+              throw new Error(error);
+            } 
           });
         }
       }
     });
 
-    request("https://www.elmundo.es", (err, res, body) => {
+    await request("https://www.elmundo.es", (err, res, body) => {
       if (!err && res.statusCode == 200) {
         let $ = cheerio.load(body);
         const news = $("div[class=ue-c-cover-content__body]");
@@ -81,7 +83,9 @@ module.exports = {
           };
 
           request(options, function(error, response, body) {
-            if (error) throw new Error(error);
+            if (error){
+              throw new Error(error);
+            }
           });
         }
       }

@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var app = require('./app');
 var port = 8080;
 
-var webScrapper = require('./services/webScrapper');
+// var webScrapper = require('./services/webScrapper');
 
 // Conexion a MongoDB
 mongoose.Promise = global.Promise;
