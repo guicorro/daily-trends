@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var app = require('./app');
 var port = 8080;
 
-// var webScrapper = require('./services/webScrapper');
+var webScrapper = require('./services/webScrapper');
 
 // Conexion a MongoDB
 mongoose.Promise = global.Promise;
@@ -17,10 +17,7 @@ mongoose.connect('mongodb://localhost:27017/daily-trends', { useNewUrlParser: tr
       console.log('Servidor corriendo en http://localhost:' + port);
       var date = new Date();
       console.log(date.toLocaleString());
-      // setInterval(() => {
-      //   this.actualPage();
-      // }, 86400000 );
-      // webScrapper.scrappData();
+      webScrapper.scrappData();
     });
   })
   .catch(err => console.log(err));

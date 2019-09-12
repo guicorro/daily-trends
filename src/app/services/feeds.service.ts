@@ -26,19 +26,29 @@ export class FeedsService {
   webScrapper(): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.get(this.url + 'webScrapper/', { headers: headers });
+    return this._http.get(this.url + 'webScrapping/', { headers: headers });
   }
 
-  createFeed(feedId): Observable<any> {
+  getFeed(feedId): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.put(this.url + 'feed/' + feedId, { headers: headers });
+    return this._http.get(this.url + 'feed/' + feedId, { headers: headers });
   }
 
-  updateFeed(feedId): Observable<any> {
+
+  createFeed(feed): Observable<any> {
+    let params = JSON.stringify(feed);
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.post(this.url + 'feed/' + feedId, { headers: headers });
+    return this._http.post(this.url + 'feed/', params, { headers: headers });
+  }
+
+  updateFeed(feed): Observable<any> {
+    let params = JSON.stringify(feed);
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+
+    return this._http.put(this.url + 'feed/' + feed._id, params, { headers: headers });
   }
 
   deleteFeed(feedId): Observable<any> {

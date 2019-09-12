@@ -130,18 +130,13 @@ function uploadImage(req, res){
     if(req.files){
         var file_path = req.files.image.path;
         var file_split = file_path.split('\/');
-        var file_name = file_split[2];
+        var file_name = file_split[1];
         var ext_split = file_name.split('\.');
         var file_ext = ext_split[1];
-
-
-        if(feedId != req.user.sub){
-            return removeFilesOfUploads(res, file_path, 'No tienes permiso para actualizar los datos del usuario')
-        }
         
         if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif'){
             // Actualizar documento de usuario logueado
-            User.findByIdAndUpdate(feedId, { image: file_name}, {new: true}, (err, feedUpdated) =>{
+            Feed.findByIdAndUpdate(feedId, { image: file_name}, {new: true}, (err, feedUpdated) =>{
                 if(err){
                     return res.status(500).send({
                         message: 'Error en la peticion de update'
@@ -177,7 +172,6 @@ function removeFilesOfUploads(res, file_path, message){
 
 function getImageFile(req, res){
     var image_file = req.params.imageFile;
-
     var path_file = './images/' + image_file;
     fs.exists(path_file, (exists) => {
         if(exists){

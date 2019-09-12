@@ -1,0 +1,33 @@
+<div class= "col-lg-5">
+    <h2> Editando: </h2>
+
+    <form #feedEditForm="ngForm" *ngIf="feed" (ngSubmit)="updateFeed()" class="col-lg-12">
+            <p>
+                <label>Titulo</label>
+                <input type="text" name="title" #name="ngModel" [(ngModel)]="feed.title" class="form-control" >
+            </p>
+            <p>
+                <label>Body</label>
+                <input type="text" name="body" #surname="ngModel" [(ngModel)]="feed.body" class="form-control" >
+            </p>
+            <p>
+                <label>Fuente</label>
+                <input type="text" name="source" #nick="ngModel" [(ngModel)]="feed.source" class="form-control" >
+            </p>
+            <p>
+                <label>Fuente</label>
+                <input type="text" name="publisher" #nick="ngModel" [(ngModel)]="feed.publisher" class="form-control" >
+            </p>
+            <div *ngIf="feed.image">
+                <img src="{{url + 'get-image-feed/' + feed.image}}">
+            </div>
+            <p>
+                <label>Imagen</label>
+                <input type="file" placeholder="Upload image" (change)="fileChangeEvent($event)">
+            </p>
+
+        <input type="submit"  value="Editar" class="btn btn-success pull-right" [disabled]="!feedEditForm.form.valid" >
+        <a href="/" class="btn btn-primary">Volver</a>
+
+    </form>
+</div>

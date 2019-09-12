@@ -1,13 +1,22 @@
 <h2>Listado de noticias</h2>
+<div class="container">
+    <a href="/create-feed" class="btn btn-primary">Añadir noticia</a>
+    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="webScrapper()">Scrapping de noticias</button>
+</div>
+
 <div class="row card-group">
   <div *ngFor="let feed of feeds" class="col-3" style="padding-bottom: 10px">
     <div class="card h-100">
-      <img *ngIf="feed.image" src="{{ feed.image }}" class="card-img-top" />
+      <img *ngIf="feed.image" src="{{feed.image }}" class="card-img-top" />
       <img *ngIf="!feed.image" src="..." class="card-img-top" style="height: 100%" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{{ feed.title }}</h5>
         <p class="card-text">{{ feed.body }}</p>
         <a href="{{ feed.source }}" class="btn btn-primary">Fuente</a>
+
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteFeed(feed._id)">Eliminar</button>
+        <a href="/update-feed/{{feed._id}}" class="btn btn-primary">Editar</a>
+
       </div>
     </div>
   </div>

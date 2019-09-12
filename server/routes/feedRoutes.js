@@ -16,7 +16,7 @@ api.delete('/feed/:id', FeedController.deleteFeed)
 
 api.get('/webScrapping/', WebScrapperController.scrappData);
 
-api.post('/upload-image-contact/:id',[md_upload] ,FeedController.uploadImage);
+api.post('/upload-image-feed/:id',[md_upload] ,FeedController.uploadImage);
 api.get('/get-image-feed/:imageFile', FeedController.getImageFile);
 
 module.exports = api;
